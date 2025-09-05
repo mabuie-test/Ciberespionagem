@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Monitor Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Monitor Dashboard</h1>
+      <div id="deviceSelector">
+        <input id="deviceIdInput" placeholder="DeviceId (ex: ANDROID_ID)" />
+        <button id="btnSelect">Selecionar</button>
+      </div>
+      <div id="statusBox">Status: <span id="statusDot" class="offline"></span> <span id="lastSeen">—</span></div>
+    </header>
+
+    <main>
+      <aside class="sidebar">
+        <ul class="menu">
+          <li data-section="sms">📩 Mensagens</li>
+          <li data-section="calls">📞 Chamadas</li>
+          <li data-section="notifs">🔔 Notificações</li>
+          <li data-section="location">📍 Localizações</li>
+          <li data-section="media">🖼️ Mídia</li>
+          <li data-section="usage">📊 App Usage</li>
+        </ul>
+      </aside>
+
+      <section class="content">
+        <div id="sms" class="panel hidden"><h2>SMS</h2><ul id="smsList"></ul></div>
+        <div id="calls" class="panel hidden"><h2>Chamadas</h2><ul id="callsList"></ul></div>
+        <div id="notifs" class="panel hidden"><h2>Notificações</h2><ul id="notifsList"></ul></div>
+        <div id="location" class="panel hidden">
+          <h2>Localizações</h2>
+          <div id="map" style="height:400px;"></div>
+          <ul id="locList"></ul>
+        </div>
+        <div id="media" class="panel hidden"><h2>Mídia</h2><ul id="mediaList"></ul></div>
+        <div id="usage" class="panel hidden"><h2>App Usage</h2><ul id="usageList"></ul></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
